@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { UIConfig } from '../config/ui.config'
-import { MenuEntry } from '../config/ui.models'
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +6,7 @@ import { MenuEntry } from '../config/ui.models'
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  menuEntries : MenuEntry[];
   constructor() {
-    this.menuEntries = UIConfig.menuEntries;
   }
 
   ngOnInit() {
