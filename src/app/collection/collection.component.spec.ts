@@ -1,13 +1,13 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {inject} from "@angular/core/testing";
-import {CollectionComponent} from "./collection.component";
-import {ShoeService} from "../shoes/shoe.service";
-import {HttpClient} from "@angular/common/http";
-import {HttpHandler} from "@angular/common/http";
-import {Routes} from "@angular/router";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpTestingController} from "@angular/common/http/testing";
-import {environment} from "environments/environment";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { inject } from "@angular/core/testing";
+import { CollectionComponent } from "./collection.component";
+import { ShoeService } from "../shoes/shoe.service";
+import { HttpClient } from "@angular/common/http";
+import { HttpHandler } from "@angular/common/http";
+import { Routes } from "@angular/router";
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpTestingController } from "@angular/common/http/testing";
+import { environment } from "environments/environment";
 
 describe('CollectionComponent', () => {
   let component: CollectionComponent;
@@ -18,7 +18,7 @@ describe('CollectionComponent', () => {
   }
 
   const fake_routes: Routes = [
-    {path: 'home', component: MyComponent},
+    { path: 'home', component: MyComponent },
   ];
 
   beforeEach(async(() => {

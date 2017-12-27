@@ -1,0 +1,18 @@
+<p>id: {{shoe.shoe_id}}</p>
+<p>nom : {{shoe.name}}</p>
+<p>{{shoe.brand.name}}</p>
+<p>prix : {{shoe.price}}</p>
+<p>Description courte : {{shoe.description.short_description}}</p>
+<p>Description longue : {{shoe.description.full_description}}</p>
+<p>Catégories : </p>
+<ul>
+  <li *ngFor="let category of shoe.categories">{{category.name}}</li>
+</ul>
+<p>Collections : </p>
+<ul>
+  <li *ngFor="let collection of shoe.collections">{{collection.name}}</li>
+</ul>
+<p>Couleurs : </p>
+<ul>
+  <li *ngFor="let color of shoe.colors">{{color.value}}</li>
+</ul>

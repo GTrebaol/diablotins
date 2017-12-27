@@ -1,6 +1,6 @@
-import {TestBed, inject} from "@angular/core/testing";
-import {ShoeService} from "./shoe.service";
-import {HttpClientModule} from "@angular/common/http";
+import { TestBed, inject } from "@angular/core/testing";
+import { ShoeService } from "./shoe.service";
+import { HttpClientModule } from "@angular/common/http";
 
 describe('ShoeService', () => {
   beforeEach(() => {
