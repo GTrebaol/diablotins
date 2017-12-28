@@ -17,7 +17,10 @@ export class CollectionCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.image_url = _.find(this.shoe['pictures'], function (image) { return image.is_primary })['url'];
+    let image = _.find(this.shoe['pictures'], function (image) { return image.is_primary });
+    if (image) {
+      this.image_url = image.url;
+    }
   }
 
 }

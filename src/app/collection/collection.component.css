@@ -13,6 +13,10 @@ body {
   background-color: #fff;
 }
 
+.text-muted {
+  color: #868e96 !important;
+}
+
 .jumbotron p:last-child {
   margin-bottom: 0;
 }
@@ -45,3 +49,20 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+
+.card > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
