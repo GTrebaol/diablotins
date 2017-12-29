@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-
-  apiUrl: 'http://localhost:8082/api'
+  apiUrl: 'http://localhost:8082/api',
+  captchaKey: '6Ledsz4UAAAAAH7VyhIawtCUS8GMub2_CxKi4IVf'
 };
