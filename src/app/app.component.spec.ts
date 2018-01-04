@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { TestBed, async } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
-import { FooterComponent } from "./core/footer/footer.component";
-import { MenuComponent } from "./core/menu/menu.component";
+import { FooterComponent } from "./components/core/footer/footer.component";
+import { MenuComponent } from "./components/core/menu/menu.component";
 import { RouterTestingModule } from "@angular/router/testing";
 
 describe('AppComponent', () => {

@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm">
+  <div class="form-group">
+    <input class="form-control" placeholder="Nom" type="username" formControlName="username" autofocus/>
+  </div>
+  <div class="form-group">
+    <input class="form-control" placeholder="Mot de passe" type="password" formControlName="password"/>
+  </div>
+  <div class="text-right">
+    <button class="btn btn-lg btn-success" [disabled]="!loginForm.valid" (click)="onSubmit()">
+      Login
+    </button>
+  </div>
+</form>

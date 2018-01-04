@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card card-inverse">
+        <div class="card-header">
+          Nous trouver :
+        </div>
+        <div class="card-block">
+          <ngui-map zoom="16" center="48.386999,-4.491046">
+            <marker position="48.386999,-4.491046" [geoFallbackPosition]="[48.386999,-4.491046]"></marker>
+          </ngui-map>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card card-inverse">
+        <div class="card-header">
+          Adresse :
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <address>
+              <p>02 98 46 27 38</p>
+              <p>50 Rue d'Aiguillon</p>
+              <p>29200 Brest</p>
+            </address>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="card card-inverse">
+        <div class="card-header">
+          Horaires :
+        </div>
+        <div class="card-block">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Jour</th>
+              <th>Heures</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="custom-bg-success">
+              <td>Lundi</td>
+              <td>09:00-12:00, 14:00-19:00</td>
+            </tr>
+            <tr class="custom-bg-success">
+              <td>Mardi</td>
+              <td>09:00-12:00, 14:00-19:00</td>
+            </tr>
+            <tr class="custom-bg-success">
+              <td>Mercredi</td>
+              <td>09:00-12:00, 14:00-19:00</td>
+            </tr>
+            <tr class="custom-bg-success">
+              <td>Jeudi</td>
+              <td>09:00-12:00, 14:00-19:00</td>
+            </tr>
+            <tr class="custom-bg-success">
+              <td>Vendredi</td>
+              <td>09:00-12:00, 14:00-19:00</td>
+            </tr>
+            <tr class="custom-bg-success">
+              <td>Samedi</td>
+              <td>09:00-12:00, 14:00-19:00</td>
+            </tr>
+            <tr class="custom-bg-danger">
+              <td>Dimanche</td>
+              <td>Fermé</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card card-inverse">
+            <div class="card-header">
+              Nous contacter :
+            </div>
+            <div class="card-block">
+              <input class="form-control" type="text" placeholder="Nom">
+              <br>
+              <input class="form-control" type="text" placeholder="Email">
+              <br>
+              <textarea class="form-control" placeholder="Votre commentaire..." name="contact" id="contact-content"
+                        cols="30" rows="10"></textarea>
+              <br>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="g-recaptcha" [attr.data-sitekey]="captchaKey"></div>
+                </div>
+                <div class="col-sm-6">
+                  <button type="button" class="oi oi-location btn btn-primary btn-lg">Envoyer</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

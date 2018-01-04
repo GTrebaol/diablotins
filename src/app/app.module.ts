@@ -3,17 +3,24 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { RoutingModule } from "./routing.module";
-import { CoreModule } from "./core/core.module";
-import { ContactComponent } from "./contact/contact.component";
-import { CollectionComponent } from "./collection/collection.component";
-import { AccueilComponent } from "./accueil/accueil.component";
-import { ShoeService } from "./shoes/shoe.service";
+import { CoreModule } from "./components/core/core.module";
+import { ContactComponent } from "./components/contact/contact.component";
+import { CollectionComponent } from "../modules/shoe/components/collection/collection.component";
+import { AccueilComponent } from "./components/accueil/accueil.component";
+import { ShoeService } from "../shared/services/shoe.service";
 import { HttpClientModule } from "@angular/common/http";
-import { CollectionCardComponent } from "./components/collection-card/collection-card.component";
-import { ShoeComponent } from "./shoes/shoe.component";
+import { CollectionCardComponent } from "../modules/shoe/components/collection-card/collection-card.component";
+import { ShoeComponent } from "../modules/shoe/components/shoes/shoe.component";
+import { NguiMapModule } from "@ngui/map";
+import { AdminLayoutComponent } from "./components/layout/admin-layout.component";
+import { AuthService } from "../shared/services/auth.service";
+import { LoginGuard } from "../shared/services/login-guard.service";
+import { AppLayoutComponent } from "./components/layout/app-layout.component";
 
 @NgModule({
   declarations: [
+    AdminLayoutComponent,
+    AppLayoutComponent,
     AppComponent,
     ContactComponent,
     CollectionComponent,
@@ -26,9 +33,10 @@ import { ShoeComponent } from "./shoes/shoe.component";
     BrowserModule,
     CoreModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyCKlofF026tdVNnJI4Y1BJKqmiI5LHXO7I'})
   ],
-  providers: [ShoeService],
+  providers: [AuthService, ShoeService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

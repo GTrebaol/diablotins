@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+.loading {
+  opacity: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #272c33;
+  padding-top: 25vh;
+  text-align: center;
+  z-index: -1;
+  transition: opacity .8s ease-out;
+}
+
+app-root:empty, app-root.loading {
+  opacity: 1;
+  z-index: 100;
+
+}
+
+app-root.loading:h1 {
+  font-family: "courier", monospace;
+  color: #EEE;
+  margin-bottom: 50px;
+}
+
+.panel-heading {
+  border-bottom: 1px solid #C8C8C8;
+}
+
+.card-block {
+  padding: 10px;
+}
