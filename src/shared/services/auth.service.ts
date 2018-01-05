@@ -25,9 +25,7 @@ export class AuthService {
   }
 
   public login(payload: LoginData) {
-    this.httpClient.post(API_URL + '/auth', payload).subscribe(response => {
-      localStorage.setItem(this._tokenKey, response['token']);
-    });
+    return this.httpClient.post(API_URL + '/auth', payload);
   }
 
   public logout() {

@@ -15,6 +15,9 @@ export class LoginComponent {
   }
 
   onLogin(payload: LoginData) {
-    this._auth.login(payload).subscribe(r => this._router.navigateByUrl('/admin/dashboard'));
+    this._auth.login(payload).subscribe(response => {
+      this._auth.setToken(response['token']);
+      this._router.navigateByUrl('/admin/dashboard')
+    });
   }
 }
