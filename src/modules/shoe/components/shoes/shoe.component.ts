@@ -37,7 +37,7 @@ export class ShoeComponent implements OnInit {
 
   _getDetailShoe(_id) {
     this._shoeService.getDetailShoe(_id).subscribe(shoe => {
-      this.shoe = shoe
+      this.shoe = shoe;
       this._selectDefaultColor();
       this._selectDefaultImage();
       this._selectImagesFromColor();

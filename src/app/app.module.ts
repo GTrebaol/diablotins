@@ -16,6 +16,7 @@ import { AdminLayoutComponent } from "./components/layout/admin-layout.component
 import { AuthService } from "../shared/services/auth.service";
 import { LoginGuard } from "../shared/services/login-guard.service";
 import { AppLayoutComponent } from "./components/layout/app-layout.component";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AppLayoutComponent } from "./components/layout/app-layout.component";
     CoreModule,
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyCKlofF026tdVNnJI4Y1BJKqmiI5LHXO7I'})
   ],
   providers: [AuthService, ShoeService, LoginGuard],
