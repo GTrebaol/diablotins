@@ -17,6 +17,7 @@ import { AuthService } from "../shared/services/auth.service";
 import { LoginGuard } from "../shared/services/login-guard.service";
 import { AppLayoutComponent } from "./components/layout/app-layout.component";
 import { ToastrModule } from "ngx-toastr";
+import { PagerService } from "../shared/services/pager.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ToastrModule } from "ngx-toastr";
     ToastrModule.forRoot(),
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyCKlofF026tdVNnJI4Y1BJKqmiI5LHXO7I'})
   ],
-  providers: [AuthService, ShoeService, LoginGuard],
+  providers: [AuthService, ShoeService, LoginGuard, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,6 +3,8 @@ export class Shoe {
   name: string = '';
   brandId: number;
   colors: Object[];
+  price: number;
+  reference: string = '';
 
 
   constructor(values: Object = {}) {

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { HttpHeaders } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Observable } from "rxjs";
 import { Response } from "@angular/http";
@@ -36,10 +35,7 @@ export class ShoeService {
   }
 
   public getShoes(page: number): Observable<any> {
-    let customHeader = new HttpHeaders();
-    customHeader.append('pageNumber', page.toString());
-    let options = {headers: customHeader};
-    return this.httpClient.get(API_URL + this.serviceURL, options);
+    return this.httpClient.get(API_URL + this.serviceURL + '?pageNumber=' + page.toString());
   }
 
   public editShoe(shoeIdToEdit: number, shoe: Shoe) {
