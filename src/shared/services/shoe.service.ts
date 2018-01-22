@@ -27,7 +27,7 @@ export class ShoeService {
   }
 
   public getDetailShoe(_idShoe: number): Observable<any> {
-    return this.httpClient.get(API_URL + this.serviceURL + _idShoe)
+    return this.httpClient.get(API_URL + this.serviceURL + '/' + _idShoe)
   }
 
   public addShoe(shoe: Shoe): Observable<any> {

@@ -45,7 +45,9 @@ export class ShoesCrudListComponent implements OnInit {
   deleteShoe(id: number) {
     let dialogRef = this.dialog.open(ConfirmationDialog);
     dialogRef.afterClosed().subscribe(result => {
-      this._shoeService.deleteShoe(id).subscribe();
+      if (result === true) {
+        this._shoeService.deleteShoe(id).subscribe();
+      }
     })
   }
 
