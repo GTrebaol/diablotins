@@ -4,6 +4,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { HttpRequest } from "@angular/common/http";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import { TokenService } from "./token.service";
 
 const API_URL = environment.apiUrl;
 
@@ -13,15 +14,7 @@ export class AuthService {
   private _tokenKey: string = 'token';
   private _isLoggedIn: boolean = false;
 
-  constructor(private httpClient: HttpClient) {
-  }
-
-  public getToken(): string {
-    return localStorage.getItem(this._tokenKey);
-  }
-
-  public setToken(token: string) {
-    localStorage.setItem(this._tokenKey, token);
+  constructor(private httpClient: HttpClient, private tokenService: TokenService) {
   }
 
   public login(payload: LoginData) {
@@ -37,7 +30,7 @@ export class AuthService {
     let result: boolean = false;
     const token = localStorage.getItem(this._tokenKey);
     if (token) {
-      let jwtHelper: JwtHelperService = new JwtHelperService(this.getToken());
+      let jwtHelper: JwtHelperService = new JwtHelperService(this.tokenService.getToken());
       return !jwtHelper.isTokenExpired(token);
     }
     return result;

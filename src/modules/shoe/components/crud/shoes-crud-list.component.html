@@ -1,61 +1,50 @@
-<table class="table table-striped">
-  <thead class="thead-light">
-  <tr>
-    <th>Nom</th>
-    <th>Prix</th>
-    <th>Référence</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let shoe of shoes">
-    <td>{{shoe.name}}</td>
-    <td>{{shoe.price}}</td>
-    <td>{{shoe.reference}}</td>
-    <td class="btn-group btn-group-sm">
-      <button class="btn"> Editer</button>
-      <button class="btn"> Supprimer</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<h1>Gestion des stocks de chaussures</h1>
+<button class="btn" (click)="createShoe()">Ajouter une chaussure</button>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-responsive-sm">
+      <thead class="thead-light">
+      <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Référence</th>
+        <th>Marque</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let shoe of shoes">
+        <td>{{shoe.name}}</td>
+        <td>{{shoe.price}}</td>
+        <td>{{shoe.reference}}</td>
+        <td>{{shoe.brand.name}}</td>
+        <td class="btn-group btn-group-sm">
+          <button class="btn" (click)="updateShoe(shoe?.shoe_id)">Editer</button>
+          <button class="btn" (click)="deleteShoe(shoe?.shoe_id)">Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
+    <nav aria-label="Page navigation">
+      <ul *ngIf="pager?.pages?.length" class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{disabled:pager?.currentPage == 1}">
+          <a class="page-link" (click)="getShoesForPage(1)">First</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager?.currentPage == 1}">
+          <a class="page-link" (click)="getShoesForPage(-1 + pager?.currentPage)">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of pager?.pages" [ngClass]="{active:pager?.currentPage == page}">
+          <a class="page-link" (click)="getShoesForPage(page)">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager?.currentPage == pager?.totalPages}">
+          <a class="page-link" (click)="getShoesForPage(pager?.currentPage + 1)">Next</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager?.currentPage == pager?.totalPages}">
+          <a class="page-link" (click)="getShoesForPage(pager?.totalPages)">Last</a>
+        </li>
+      </ul>
+    </nav>
 
-<nav aria-label="...">
-  <ul *ngIf="pager?.pages?.length" class="pagination">
-    <li class="page-item" [ngClass]="{disabled:pager?.currentPage == 1}">
-      <a class="page-link" (click)="getShoesForPage(1)">First</a>
-    </li>
-    <li class="page-item" [ngClass]="{disabled:pager?.currentPage == 1}">
-      <a class="page-link" (click)="getShoesForPage(-1 + pager?.currentPage)">Previous</a>
-    </li>
-    <li class="page-item" *ngFor="let page of pager?.pages" [ngClass]="{active:pager?.currentPage == page}">
-      <a class="page-link" (click)="getShoesForPage(page)">{{page}}</a>
-    </li>
-    <li class="page-item" [ngClass]="{disabled:pager?.currentPage == pager?.totalPages}">
-      <a class="page-link" (click)="getShoesForPage(pager?.currentPage + 1)">Next</a>
-    </li>
-    <li class="page-item" [ngClass]="{disabled:pager?.currentPage == pager?.totalPages}">
-      <a class="page-link" (click)="getShoesForPage(pager?.totalPages)">Last</a>
-    </li>
-  </ul>
-</nav>
-
-<!--
-<nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item"class="page-item" [ngClass]="{'disabled':pageAsked === 1}">
-      <a class="page-link" href="#" [click]="getShoesForPage(pageAsked-1)" tabindex="-1">Previous</a>
-    </li>
-    <li *ngIf="pageAsked > 5" class="page-item"><a class="page-link" href="#">1</a></li>
-    <li *ngIf="pageAsked > 1 && pageAsked " class="page-item"><a class="page-link" href="#">{{pageAsked - 1}}</a></li>
-    <li class="page-item active">
-      <a class="page-link" href="#">{{pageAsked}} <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item" [ngClass]="{'disabled':pageAsked + 1 > pagesTotal}">
-      <a class="page-link" [click]="getShoesForPage(pageAsked+1)" href="#">Next</a>
-    </li>
-  </ul>
-</nav>-->
-
+  </div>
+</div>

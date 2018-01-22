@@ -19,7 +19,6 @@ export class LoginGuard implements CanActivateChild {
   }
 
   constructor(public auth: AuthService, public router: Router) {
-    console.log("login guard");
   }
 
 }

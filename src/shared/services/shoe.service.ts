@@ -41,4 +41,8 @@ export class ShoeService {
   public editShoe(shoeIdToEdit: number, shoe: Shoe) {
     return this.httpClient.post(API_URL + this.serviceURL + '/' + shoeIdToEdit, shoe);
   }
+
+  public deleteShoe(shoeIdToDelete: number) {
+    return this.httpClient.delete(API_URL + this.serviceURL + '/' + shoeIdToDelete);
+  }
 }
