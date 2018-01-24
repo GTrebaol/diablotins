@@ -5,6 +5,7 @@ import { PagerService } from "../../../../shared/services/pager.service";
 import { Router } from "@angular/router";
 import { ConfirmationDialog } from "../../../../app/components/core/confirmation-dialog/confirmation-dialog.component";
 import { MatDialog } from "@angular/material";
+import * as _ from "lodash";
 
 @Component({
   selector: 'shoes-crud-list',
@@ -46,7 +47,13 @@ export class ShoesCrudListComponent implements OnInit {
     let dialogRef = this.dialog.open(ConfirmationDialog);
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this._shoeService.deleteShoe(id).subscribe();
+        this._shoeService.deleteShoe(id).subscribe(response => {
+          if (response) {
+            _.remove(this.shoes, function (shoe) {
+              return shoe.shoe_id === id;
+            })
+          }
+        });
       }
     })
   }

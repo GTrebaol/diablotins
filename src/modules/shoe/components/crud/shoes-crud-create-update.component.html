@@ -1,41 +1,82 @@
-<div class="row">
-  <span *ngIf="update">Éditer</span><span *ngIf="!update">Créer</span> une chaussure
-  <form>
+{{shoeForm.value | json}}
+<form [formGroup]="shoeForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="shoe">
     <div class="form-group">
-      <label for="nom">Nom :</label>
-      <input type="text" class="form-control" id="nom" placeholder="nom chaussure">
+      <label for="designation">Désignation de la chaussure</label>
+      <input formControlName="name" type="text" class="form-control" id="designation" aria-describedby="emailHelp"
+             placeholder="Désignation">
     </div>
     <div class="form-group">
-      <label for="brand">Marque :</label>
-      <select class="form-control" id="brand">
-        <option *ngFor="let brand of brandList" value="{{brand?.id}}">{{brand?.name}}</option>
+      <label for="reference">Référence de la chaussure</label>
+      <input formControlName="reference" type="text" class="form-control" id="reference" aria-describedby="emailHelp"
+             placeholder="Référence">
+    </div>
+    <div class="form-group">
+      <label for="price">Prix</label>
+      <div class="input-group">
+        <span class="input-group-addon">€</span>
+        <input formControlName="price" type="number" class="form-control" min="0.00" max="1000.00" step="0.01"
+               id="price"
+               placeholder="Prix">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="marque">Marque</label>
+      <select formControlName="brand" class="form-control" id="marque">
+        <option *ngFor="let brand of brands" [value]="brand?.brand_id">{{brand?.name}}</option>
       </select>
     </div>
-    <!--
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Example select</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>-->
-  </form>
-
-</div>
+  </div>
+  <div class="form-group">
+    <label for="categories">Catégories</label>
+    <select formControlName="categories" multiple class="form-control" id="categories">
+      <option *ngFor="let category of categories" [value]="category?.category_id">{{category?.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="collections">Collections</label>
+    <select formControlName="collections" multiple class="form-control" id="collections">
+      <option *ngFor="let collection of collections" [value]="collection?.collection_id">{{collection?.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above
+      input. It's a bit lighter and easily wraps to a new line.
+    </small>
+  </div>
+  <!--  <fieldset class="form-group">
+      <legend>Radio buttons</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+          Option one is this and that—be sure to include why it's great
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          Option two can be something else and selecting it will deselect option one
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+          Option three is disabled
+        </label>
+      </div>
+    </fieldset>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Check me out
+      </label>
+    </div>-->
+  <button type="submit" class="btn btn-primary"><span *ngIf="shoeIdToEdit">Editer</span><span *ngIf="!shoeIdToEdit">Créer</span>
+  </button>
+</form>
