@@ -4,19 +4,17 @@ import { environment } from "../../environments/environment";
 import { Observable } from "rxjs";
 import { Response } from "@angular/http";
 import { Shoe } from "../../modules/shoe/components/shoes/shoe";
-import { Brand } from "../models/brand.model";
-import { Collection } from "../models/collection.model";
-import { Category } from "../models/category.model";
 
 const API_URL = environment.apiUrl;
 
 @Injectable()
 export class ShoeService {
 
-  private shoeServiceUrl = '/shoes';
-  private brandServiceUrl = '/brands';
-  private collectionServiceUrl = '/collections';
-  private categoryServiceUrl = '/categories';
+  private shoeServiceUrl: string = '/shoes';
+  private brandServiceUrl: string = '/brands';
+  private collectionServiceUrl: string = '/collections';
+  private categoryServiceUrl: string = '/categories';
+  private colorServiceUrl: string = '/colors';
 
   private handleError(error: any) {
     if (error instanceof Response) {
@@ -51,22 +49,27 @@ export class ShoeService {
   }
 
   public editShoe(shoeIdToEdit: number, shoe: Shoe) {
-    return this.httpClient.post(API_URL + this.shoeServiceUrl + '/' + shoeIdToEdit, shoe);
+    return this.httpClient.put(API_URL + this.shoeServiceUrl + '/' + shoeIdToEdit, shoe);
   }
 
   public deleteShoe(shoeIdToDelete: number) {
     return this.httpClient.delete(API_URL + this.shoeServiceUrl + '/' + shoeIdToDelete);
   }
 
-  public getBrands(): Observable<Brand[]> {
+  public getBrands(): Observable<any> {
     return this.httpClient.get(API_URL + this.brandServiceUrl);
   }
 
-  public getCollections(): Observable<Collection[]> {
+  public getCollections(): Observable<any> {
     return this.httpClient.get(API_URL + this.collectionServiceUrl);
   }
 
-  public getCategories(): Observable<Category[]> {
+  public getCategories(): Observable<any> {
     return this.httpClient.get(API_URL + this.categoryServiceUrl);
   }
+
+  public getColors(): Observable<any> {
+    return this.httpClient.get(API_URL + this.colorServiceUrl);
+  }
+
 }

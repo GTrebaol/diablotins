@@ -1,3 +1,4 @@
+<h1><span *ngIf="shoeIdToEdit">Edition</span><span *ngIf="!shoeIdToEdit">Création</span> d'une chaussure</h1>
 <form [formGroup]="shoeForm" (ngSubmit)="onSubmit()">
   <div formGroupName="shoe">
     <div class="form-group">
@@ -49,6 +50,18 @@
       input. It's a bit lighter and easily wraps to a new line.
     </small>
   </div>
+
+  <fieldset class="form-group">
+    <legend>Coloris</legend>
+    <div *ngFor="let color of colors" class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="optionsRadios" id="optionsRadios1"
+               [value]="color.color_id">{{color.value}}
+      </label>
+    </div>
+  </fieldset>
+
+
   <!--  <fieldset class="form-group">
       <legend>Radio buttons</legend>
       <div class="form-check">

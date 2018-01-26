@@ -10,6 +10,7 @@ import { Brand } from "../../../../shared/models/brand.model";
 import { Collection } from "../../../../shared/models/collection.model";
 import { Category } from "../../../../shared/models/category.model";
 import { Observable } from "rxjs";
+import { Color } from "../../../../shared/models/color.model";
 
 @Component({
   selector: 'shoes-crud-create-update',
@@ -22,6 +23,7 @@ export class ShoesCrudCreateUpdateComponent implements OnInit {
   private shoeIdToEdit: number;
   private brands: Brand[];
   private collections: Collection[];
+  private colors: Color[];
   private categories: Category[];
   private shoeForm = new FormGroup({
     shoe: new FormGroup({
@@ -49,6 +51,7 @@ export class ShoesCrudCreateUpdateComponent implements OnInit {
     let promises = [
       this._shoeService.getBrands(),
       this._shoeService.getCollections(),
+      this._shoeService.getColors(),
       this._shoeService.getCategories()
     ];
     if (this.shoeIdToEdit) {
@@ -58,9 +61,10 @@ export class ShoesCrudCreateUpdateComponent implements OnInit {
       .subscribe(responses => {
         this.brands = responses[0];
         this.collections = responses[1];
-        this.categories = responses[2];
+        this.colors = responses[2]
+        this.categories = responses[3];
         if (this.shoeIdToEdit) {
-          this.shoe = responses[3];
+          this.shoe = responses[4];
           this._loadForm();
         }
       });
@@ -92,6 +96,7 @@ export class ShoesCrudCreateUpdateComponent implements OnInit {
     this.shoeForm.get('shoe').patchValue({
       name: this.shoe.name,
       price: this.shoe.price,
+      reference: this.shoe.reference,
       brand: this.shoe['brand'].brand_id,
       description: this.shoe['description']['full_description']
     });
